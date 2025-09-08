@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact us</title>
+
+  <style>
+    
+   /* General Reset */
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #002d62;
+      color: white;
+      padding: 10px 20px;
+    }
+
+    .navbar-left h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .navbar-left p {
+      font-size: 14px;
+    }
+
+    .active-contact {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .active-contact:hover {
+      color: #ff7f00;
+      text-decoration: underline;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+      padding: 10px;
+      transition: 0.3s;
+      border-radius: 5px;
+    }
+
+    .nav-link:hover,
+    .dropdown:hover .nav-link {
+      background-color: #004a99;
+    }
+
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  
+    /* Hero Section */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 20px;
+      margin-top: 5px;
+       /* moved section down by 2cm */
+      background: url('https://via.placeholder.com/1200x400') no-repeat center/cover;
+      color: #333;
+    }
+
+    .hero-text {
+      max-width: 50%;
+      
+    }
+
+
+    .hero-text h1 {
+      color: #002d62;
+      font-size: 32px;
+    
+  margin-top: 1cm; /* Moves only the heading 2cm below the top of hero section */
+
+      margin-bottom: 15px;
+    }
+
+    .hero-text ul {
+      list-style: none;
+    }
+
+    .hero-text ul li {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .hero-text ul li span {
+      color: green;
+      margin-right: 10px;
+      font-size: 20px;
+    }
+
+    /* Sign Up Section */
+    .signup-container {
+      background-color: #fff;
+      padding: 12px;
+      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      width: 320px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    h2 {
+      color: #4e73df;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .input-field {
+      margin: 5px 0;
+      text-align: left;
+    }
+
+    .input-field label {
+      font-weight: 600;
+      font-size: 12px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .input-field input,
+    .input-field select {
+      width: 100%;
+      padding: 5px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 12px;
+    }
+
+    .btn {
+      background-color: #4e73df;
+      color: white;
+      padding: 7px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .footer-text {
+      margin-top: 10px;
+      font-size: 10px;
+    }
+
+    .otp-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 5px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      width: 100%;
+      margin-top: 4px;
+    }
+/* Services Section */
+    .services {
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .services h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #002d62;
+    }
+
+    .services ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      justify-content: center;
+    }
+
+    .services ul li {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin: 10px;
+      padding: 15px;
+      width: calc(25% - 40px);
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .services ul li:hover {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+      /* Remove underline from all links in the services section */
+      .services a {
+      text-decoration: none;
+      color: inherit; /* Inherits color from surrounding text */
+    }
+
+    /* Optional: Add underline on hover for better user experience */
+    .services a:hover {
+      text-decoration: underline;
+    }
+
+    /* Satisfaction Guarantee Section */
+    .guarantee-section {
+      background-color: #fff;
+      padding: 40px;
+    }
+
+    .guarantee-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .guarantee-image img {
+      max-width: 200px; /* Adjust as per the image size */
+      height: auto;
+    }
+
+    .guarantee-content {
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .guarantee-content h1 {
+      font-size: 28px;
+      color: #000;
+      margin: 0 0 15px;
+    }
+
+    .highlight {
+      color: #28a745; /* Green color */
+    }
+
+    .guarantee-content p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .get-started-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .get-started-btn:hover {
+      background-color: #218838;
+      cursor: pointer;
+    }
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+/* Reviews Section */
+.reviews {
+    padding: 20px;
+}
+
+.reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.review-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.review-content {
+    flex: 1;
+}
+
+.review-card h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.review-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+#view-more {
+    background: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#view-more:hover {
+    background: #218838;
+}
+
+    /* Chatbot */
+    .chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .chatbot button {
+      background-color: #25d366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .chatbot button:hover {
+      background-color: #1da851;
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    footer .container div {
+      margin: 10px;
+      flex: 1 1 200px;
+    }
+
+    footer h3 {
+      margin-bottom: 10px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    footer .social-links a {
+      margin-right: 10px;
+    }
+
+    footer .social-links a:hover {
+      color: #ff7f00;
+    }
+
+    footer .footer-bottom {
+      margin-top: 20px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+
+  </style>
+  
+</head>
+<body>
+    <form action="ca_backend.php" method="post">
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-left">
+      <h2>MyCA Advisor</h2>
+      <p>
+        📞 <a href="tel:+919876543210" class="active-contact">+91 9876543210</a> | 
+        📞 <a href="tel:+919123456780" class="active-contact">+91 9123456780</a> |
+        📧 <a href="mailto:support@mycaadvisor.com" class="active-contact">support@mycaadvisor.com</a>
+      </p>
+    </div>
+    <div class="navbar-right">
+      <a href="#" class="nav-link active">Home</a>
+      <a href="#service2" class="nav-link">Services</a>
+      <a href="itr_recept.html" class="nav-link">File Your ITR</a>
+      <div class="dropdown">
+        <a href="#" class="nav-link">Login ▼</a>
+        <div class="dropdown-content">
+          <a href="expert_login.html">Expert Login</a>
+          <a href="login.html">User Login</a>
+        </div>
+      </div>
+      <a href="contact us.html" class="nav-link">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero">  
+    <div class="hero-text">
+      <h1>Talk to CA/CS Instantly at India's Most Trusted Tax & Compliance Platform</h1>
+      <ul>
+        <li><span>✔</span> Book Appointment</li>
+        <li><span>✔</span> Experts Profiles</li>
+        <li><span>✔</span> Secure Data / Payments</li>
+        <li><span>✔</span> Experts Advice</li>
+        <li><span>✔</span> Consulting services</li>
+      </ul>
+    </div>
+    <!-- Sign Up Form Section -->
+   <div class="signup-container" id="signup-section">
+      <h2>Sign Up</h2>
+     <form method="post" action="Register.php">
+        <div class="input-field">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your full name">
+        </div>
+
+        <div class="input-field">
+          <label for="contact">Contact No:</label>
+          <input type="text" id="contact" name="contact" required placeholder="Enter your contact number" maxlength="10">
+          <button type="button" id="sendOtpBtn" class="otp-btn" onclick="sendOtp()">Send OTP</button>
+        </div>
+
+        <div class="input-field">
+          <label for="otp">OTP:</label>
+          <input type="text" id="otp" name="otp" placeholder="Enter OTP" disabled>
+        </div>
+
+        <div class="input-field">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email">
+        </div>
+
+        <div class="input-field">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required placeholder="Enter your password">
+        </div>
+
+        <div class="input-field">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+        </div>
+
+        <div class="input-field">
+          <label for="profession">Profession:</label>
+          <input type="text" id="profession" name="profession" required placeholder="Enter your profession">
+        </div>
+        <div class="input-field">
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="input-field">
+          <a href="profile.html"><button type="submit" class="btn" id="submitBtn">Sign Up</button></a>
+        </div>
+
+        <p class="footer-text">Already have an account? <a href="login.html">Login</a></p>
+      </form>
+    </div>
+  </div>
+  <!-- Services Section -->
+  <div class="services" id = "service2">
+    <h2>Our Services</h2>
+    <ul>
+        <li><a href="profile.html">Tax Filing</a></li>
+        <li><a href="profile.html">GST Registration</a></li>
+        <li><a href="profile.html">Trademark Registration</a></li>
+        <li><a href="profile.html">Company Formation</a></li>
+        <li><a href="profile.html">FSSAI Registration</a></li>
+        <li><a href="profile.html">Company Annual Filing</a></li>
+        <li><a href="profile.html">Company Formation</a></li>
+        <li><a href="profile.html">Company Secretarial</a></li>
+        <li><a href="profile.html">Bookkeeping</a></li>
+        <li><a href="profile.html">Auditing</a></li>
+        <li><a href="profile.html">Statutory Reporting</a></li>
+        <li><a href="profile.html">Business Startup Consultancy</a></li>
+        <li><a href="profile.html">Business Consultancy</a></li>
+        <li><a href="profile.html">Business Analysis</a></li>
+        <li><a href="profile.html">DIR-3 KYC</a></li>
+        <li><a href="profile.html">Tax Planning</a></li>
+        <li><a href="profile.html">Company Closure</a></li>
+        <li><a href="profile.html">Registered Address Change of a Company</a></li>
+        <li><a href="profile.html">Business Recovery</a></li>
+        <li><a href="profile.html">Business Valuations</a></li>
+        <li><a href="profile.html">Due Diligence</a></li>
+        <li><a href="profile.html">Family Business Consulting</a></li>
+        <li><a href="profile.html">Financial Planning</a></li>
+        <li><a href="profile.html">Investment Advisory</a></li>
+        <li><a href="profile.html">Tax Filing Expert</a></li>
+        <li><a href="profile.html">Foreign Taxation</a></li>
+        <li><a href="profile.html">Income Tax Return</a></li>
+        <li><a href="profile.html">Risk Management Advisory</a></li>
+        <li><a href="profile.html">APEDA Registration / RCMC Registration</a></li>
+        <li><a href="profile.html">Trademark Registration</a></li>
+        <li><a href="profile.html">CA Certification</a></li>
+        <li><a href="profile.html">LLP Annual Filing</a></li>
+        <li><a href="profile.html">IEC / Import Export Code Registration</a></li>
+        <li><a href="profile.html">MSME / Udyam Registration</a></li>
+        <li><a href="profile.html">NRI Registration</a></li>
+        <li><a href="profile.html">DSC / Digital Signature Certificate</a></li>
+        <li><a href="profile.html">ISO Registration</a></li>
+        <li><a href="profile.html">Trust Formation</a></li>
+        <li><a href="profile.html">ROC Filing</a></li>
+        <li><a href="profile.html">FSSAI Registration / Food License</a></li>
+        <li><a href="profile.html">Limited Liability Partnership</a></li>
+        <li><a href="profile.html">Private Limited Company Registration</a></li>
+        <li><a href="profile.html">Warehouse Registration</a></li>
+        <li><a href="profile.html">Proprietorship</a></li>
+        <li><a href="profile.html">Annual Filing</a></li>
+        <li><a href="profile.html">Company Registration</a></li>
+        <li><a href="profile.html">GST Returns</a></li>
+        <li><a href="profile.html">15ca 15cb Certificate</a></li>
+         
+      <li><a href="services.html">View More Services</a></li>
+    </ul>
+  </div>
+
+  <!-- Satisfaction Guarantee Section -->
+  <section class="guarantee-section">
+    <div class="guarantee-container">
+      <div class="guarantee-image">
+        <img src="satisfaction-guaranteed.webp" alt="Satisfaction Guarantee Badge">
+      </div>
+      <div class="guarantee-content">
+        <h1>100% Satisfaction <span class="highlight">Guaranteed</span></h1>
+        <p>
+          We promise to provide exceptional service. In case you are not satisfied with the service you purchased,
+          we will provide an unconditional refund of Web Online CA service fees you paid.
+        </p>
+  <a href="#signup-section" class="get-started-btn">Get Started →</a>
+
+      </div>
+    </div>
+  </section>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Happy Clients Reviews</title>
+      <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+  
+      <!-- Happy Clients Reviews Section -->
+      <section class="reviews">
+          <h2>Happy Clients</h2>
+          <div class="reviews-container" id="reviews-container">
+              <!-- Reviews will be loaded dynamically -->
+          </div>
+          <button id="view-more" onclick="loadMoreReviews()">View More</button>
+      </section>
+  
+      <script src="script.js"></script>
+  <!-- Chatbot -->
+  <div class="chatbot">
+    <button>WhatsApp Chat</button>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div>
+        <h3>About Us</h3>
+        <p>Providing expert advice and services for tax, compliance, and business consulting</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="services.html">Our Services</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>📞 <a href="tel:+919876543210">+91 9876543210</a></p>
+        <p>📧 <a href="mailto:support@mycaadvisor.com">support@mycaadvisor.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MyCA Advisor | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    function sendOtp() {
+      alert("OTP sent to your contact number!");
+    }
+    // Client Reviews Data
+const reviews = [
+    { name: "Rahul Sharma", image: "img1.webp", review: "The CA I found was highly professional and guided me smoothly through all tax filing processes. Highly recommended!" },
+    { name: "Priya Verma", image: "img2.webp", review: "Excellent service! The CA helped me with GST registration and saved me a lot of time." },
+    { name: "Amita Patel", image: "img3.webp", review: "I was struggling with my business audit, but thanks to this platform, I found a reliable CA who made the process seamless." },
+    { name: "Sneha Gupta", image: "client4.jpg", review: "A wonderful service for startups! Got great financial advice, and my taxation issues were sorted efficiently." },
+    { name: "Vikram Choudhary", image: "client5.jpg", review: "The platform is easy to use, and I got connected with an experienced CA who handled my income tax matters perfectly." },
+    { name: "Rohit Mehra", image: "client6.jpg", review: "Outstanding service! My CA was knowledgeable and explained everything in detail." },
+    { name: "Ananya Das", image: "client7.jpg", review: "Fast and reliable platform. I needed help with auditing, and within hours, I was connected to a professional CA." },
+    { name: "Suresh Nair", image: "client8.jpg", review: "Tax planning made easy! The CA I found was very patient and explained everything clearly." },
+    { name: "Meera Joshi", image: "client9.jpg", review: "My experience was amazing! I got the best financial guidance and saved a lot on my taxes." },
+    { name: "Arun Kumar", image: "client10.jpg", review: "This platform helped me connect with a CA who resolved my tax filing issues efficiently." },
+    { name: "Deepak Reddy", image: "client11.jpg", review: "Highly recommend! The process of finding a CA was quick and easy." },
+    { name: "Nikita Shah", image: "client12.jpg", review: "The CA I consulted was extremely knowledgeable and helped me in tax saving strategies." },
+    { name: "Karan Malhotra", image: "client13.jpg", review: "I was impressed with the professionalism and expertise of the CA I found through this website." },
+    { name: "Simran Kaur", image: "client14.jpg", review: "Smooth and efficient service. Helped me a lot with financial planning." },
+    { name: "Rajiv Singh", image: "client15.jpg", review: "This platform is a game changer! I found a CA who made my tax filing so easy and stress-free." }
+];
+
+let reviewsLoaded = 0;
+const reviewsContainer = document.getElementById("reviews-container");
+
+// Function to Load Reviews
+function loadMoreReviews() {
+    const reviewsToLoad = reviews.slice(reviewsLoaded, reviewsLoaded + 3);
+
+    reviewsToLoad.forEach(review => {
+        const reviewCard = document.createElement("div");
+        reviewCard.classList.add("review-card");
+        reviewCard.innerHTML = `
+            <img src="${review.image}" alt="${review.name}">
+            <div class="review-content">
+                <h4>${review.name}</h4>
+                <p>${review.review}</p>
+            </div>
+        `;
+        reviewsContainer.appendChild(reviewCard);
+    });
+
+    reviewsLoaded += 3;
+
+    if (reviewsLoaded >= reviews.length) {
+        document.getElementById("view-more").style.display = "none";
+    }
+}
+
+// Load initial 3 reviews
+loadMoreReviews();
+  </script>
+  </form>
+</body>
+</html>

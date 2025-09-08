@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 30px; }
+    .form-container { max-width: 500px; margin: auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    h2 { text-align: center; color: #004085; }
+    label { display: block; margin: 15px 0 5px; font-weight: bold; }
+    input, select, textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
+    button { width: 100%; background: linear-gradient(135deg, #007bff, #00c6ff); color: white; padding: 12px; border: none; border-radius: 50px; font-size: 16px; cursor: pointer; transition: all 0.3s ease; }
+    button:hover { background: linear-gradient(135deg, #0056b3, #008cff); transform: translateY(-2px); }
+  </style>
+</head>
+<body> 
+  <div class="form-container">
+    <h2>Book Appointment</h2>
+    <form id="appointmentForm" action="Confirm.html" method="GET">
+      <label for="caName">CA Name</label>
+      <input type="text" id="caName" name="caName" readonly>
+
+      <label for="name">Your Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="service">Service Required</label>
+      <input list="services" id="service" name="service" required>
+      <datalist id="services">
+        <option value="GST Filing">
+        <option value="Income Tax Filing">
+        <option value="Auditing">
+        <option value="Company Registration">
+        <option value="Financial Planning">
+        <option value="TDS Return Filing">
+        <option value="PAN Application">
+        <option value="Digital Signature">
+        <option value="Trademark Registration">
+        <option value="Startup India Compliance">
+        <option value="ROC Filing">
+        <option value="Payroll Management">
+        <option value="Accounting & Bookkeeping">
+        <option value="Tax Audit">
+        <option value="Internal Audit">
+        <option value="Due Diligence">
+        <option value="LLP Registration">
+        <option value="Private Limited Company Incorporation">
+        <option value="Partnership Firm Registration">
+        <option value="NRI Taxation">
+        <option value="Wealth Management">
+        <option value="Business Valuation">
+        <option value="Project Report Preparation">
+        <option value="Bank Loan Assistance">
+        <option value="Import Export Code (IEC)">
+        <option value="ESI & PF Registration">
+        <option value="Professional Tax Registration">
+        <option value="Corporate Governance Advisory">
+        <option value="SEBI Compliance">
+        <option value="Company Strike Off">
+        <option value="GST Registration">
+        <option value="GST Annual Return">
+        <option value="Tax Planning">
+        <option value="International Taxation">
+        <option value="Transfer Pricing">
+        <option value="Management Consultancy">
+        <option value="Forensic Audit">
+        <option value="Risk Management">
+        <option value="CSR Compliance">
+        <option value="Section 8 Company Registration">
+        <option value="OPC Registration">
+        <option value="MSME Registration">
+        <option value="Startup Valuation">
+        <option value="Business Restructuring">
+        <option value="FEMA Compliance">
+        <option value="Foreign Company Setup">
+        <option value="NGO Registration">
+        <option value="Trust/Society Formation">
+        <option value="Accounting Software Implementation">
+        <option value="XBRL Filing">
+      </datalist>
+
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="time">Preferred Time</label>
+      <input type="time" id="time" name="time" required>
+
+      <label for="message">Additional Notes</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+
+     <button type="submit">Confirm Appointment</button></a>
+    </form>
+  </div>
+
+  <script>
+    // Auto-fill CA Name from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const caName = urlParams.get("ca");
+    if (caName) {
+      document.getElementById("caName").value = caName;
+    }
+  </script>
+</body>
+</html>

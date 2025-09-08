@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - MyCA Advisor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #26476b;
+      color: white;
+      flex-wrap: wrap;
+    }
+    .navbar h2 {margin:0; font-size:24px;}
+    .navbar p {margin:5px 0 0 0; font-size:14px;}
+    .navbar a {color:white; text-decoration:none; margin-left:15px; font-size:14px;}
+    .navbar a.active-contact {font-weight:bold;}
+    .navbar-right {display:flex; align-items:center;}
+    .nav-link {margin-left:15px; position:relative;}
+    .dropdown-content {display:none; position:absolute; background:white; color:black; min-width:120px; z-index:1; top:25px; border-radius:5px; overflow:hidden;}
+    .dropdown-content a {display:block; padding:8px 10px; text-decoration:none; color:black;}
+    .dropdown:hover .dropdown-content {display:block;}
+
+    /* Login Form */
+    h2.form-header {
+      text-align: center;
+      color: #294f78;
+      margin-bottom: 20px;
+    }
+
+    .login-form {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .login-form label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .login-form input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    .login-form button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #345982;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .login-form button:hover {
+      background: #0056b3;
+    }
+    .login-form .forgot-password {
+      text-align: right;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    .login-form .forgot-password a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .login-form .forgot-password a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-left">
+      <h2>MyCA Advisor</h2>
+      <p>
+        📞 <a href="tel:+919876543210" class="active-contact">+91 9876543210</a> | 
+        📞 <a href="tel:+919123456780" class="active-contact">+91 9123456780</a> |
+        📧 <a href="mailto:support@mycaadvisor.com" class="active-contact">support@mycaadvisor.com</a>
+      </p>
+    </div>
+    <div class="navbar-right">
+      <a href="#" class="nav-link active">Home</a>
+      <a href="#service2" class="nav-link">Services</a>
+      <a href="itr.html" class="nav-link">File Your ITR</a>
+      <div class="dropdown">
+        <a href="#" class="nav-link">Login ▼</a>
+        <div class="dropdown-content">
+          <a href="expert_login.html">Expert Login</a>
+          <a href="login.html">User Login</a>
+        </div>
+      </div>
+      <a href="contact us.html" class="nav-link">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Login Form Header -->
+  <h2 class="form-header">User Login</h2>
+
+  <!-- Login Form -->
+  <div class="login-form">
+    <form action="#" method="post">
+      <label for="email">Email / Username:</label>
+      <input type="text" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <div class="forgot-password">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+</body>
+</html>

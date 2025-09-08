@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITR Receipt - MyCA Advisor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #002d62;
+      color: white;
+      flex-wrap: wrap;
+    }
+    .navbar h2 {margin:0; font-size:24px;}
+    .navbar p {margin:5px 0 0 0; font-size:14px;}
+    .navbar a {color:white; text-decoration:none; margin-left:15px; font-size:14px;}
+    .navbar a.active-contact {font-weight:bold;}
+    .navbar-right {display:flex; align-items:center;}
+    .nav-link {margin-left:15px; position:relative;}
+    .dropdown-content {display:none; position:absolute; background:white; color:black; min-width:120px; z-index:1; top:25px; border-radius:5px; overflow:hidden;}
+    .dropdown-content a {display:block; padding:8px 10px; text-decoration:none; color:black;}
+    .dropdown:hover .dropdown-content {display:block;}
+
+    /* Form */
+    h2.form-header {
+      text-align: center;
+      color: #162535;
+      margin-bottom: 20px;
+    }
+    form {
+      max-width: 450px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    label {display:block; margin-top:12px; font-weight:bold; font-size:14px;}
+    input, select {width:100%; padding:7px; margin-top:5px; border-radius:5px; border:1px solid #ccc; font-size:14px;}
+    button {margin-top:15px; padding:10px; width:100%; background:#007bff; color:white; border:none; border-radius:5px; cursor:pointer; font-size:16px;}
+    button:hover {background:#0056b3;}
+
+    /* Receipt */
+    #receipt {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+      display: none;
+      border-top: 5px solid #007bff;
+    }
+    #receipt h3 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      background: #007bff;
+      color: white;
+    }
+    #downloadBtn {
+      background:#28a745;
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #downloadBtn:hover {
+      background:#218838;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-left">
+      <h2>MyCA Advisor</h2>
+      <p>
+        📞 <a href="tel:+919876543210" class="active-contact">+91 9876543210</a> | 
+        📞 <a href="tel:+919123456780" class="active-contact">+91 9123456780</a> |
+        📧 <a href="mailto:support@mycaadvisor.com" class="active-contact">support@mycaadvisor.com</a>
+      </p>
+    </div>
+    <div class="navbar-right">
+      <a href="#" class="nav-link active">Home</a>
+      <a href="#service2" class="nav-link">Services</a>
+      <a href="itr.html" class="nav-link">File Your ITR</a>
+      <div class="dropdown">
+        <a href="#" class="nav-link">Login ▼</a>
+        <div class="dropdown-content">
+          <a href="expert_login.html">Expert Login</a>
+          <a href="login.html">User Login</a>
+        </div>
+      </div>
+      <a href="contact us.html" class="nav-link">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Form Header -->
+  <h2 class="form-header">File Your Income Tax Return (ITR)</h2>
+
+  <!-- ITR Form -->
+  <form id="itrForm">
+    <label for="fullname">Full Name:</label>
+    <input type="text" id="fullname" name="fullname" required>
+
+    <label for="pan">PAN Number:</label>
+    <input type="text" id="pan" name="pan" maxlength="10" required>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+
+    <label for="salary">Annual Salary (₹):</label>
+    <input type="number" id="salary" name="salary" required>
+
+    <label for="deductions">Deductions (₹):</label>
+    <input type="number" id="deductions" name="deductions">
+
+    <label for="bankname">Bank Name:</label>
+    <input type="text" id="bankname" name="bankname" required>
+
+    <label for="account">Account Number:</label>
+    <input type="text" id="account" name="account" required>
+
+    <label for="ifsc">IFSC Code:</label>
+    <input type="text" id="ifsc" name="ifsc" required>
+
+    <button type="submit">Submit ITR</button>
+  </form>
+
+  <!-- Receipt -->
+  <div id="receipt">
+    <h3>Income Tax Return Submission Receipt</h3>
+    <table>
+      <tr><th>Field</th><th>Details</th></tr>
+      <tr><td>Name</td><td id="rName"></td></tr>
+      <tr><td>PAN</td><td id="rPAN"></td></tr>
+      <tr><td>Date of Birth</td><td id="rDOB"></td></tr>
+      <tr><td>Annual Salary (₹)</td><td id="rSalary"></td></tr>
+      <tr><td>Deductions (₹)</td><td id="rDeductions"></td></tr>
+      <tr><td>Taxable Income (₹)</td><td id="rTaxable"></td></tr>
+      <tr><td>Bank Name</td><td id="rBank"></td></tr>
+      <tr><td>Account Number</td><td id="rAccount"></td></tr>
+      <tr><td>IFSC Code</td><td id="rIFSC"></td></tr>
+      <tr><td>Submission Date</td><td id="rDate"></td></tr>
+    </table>
+    <button id="downloadBtn">Download PDF</button>
+  </div>
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const itrForm = document.getElementById('itrForm');
+    const receipt = document.getElementById('receipt');
+
+    itrForm.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      // Fetch values
+      const fullname = document.getElementById('fullname').value;
+      const pan = document.getElementById('pan').value;
+      const dob = document.getElementById('dob').value;
+      const salary = Number(document.getElementById('salary').value);
+      const deductions = Number(document.getElementById('deductions').value || 0);
+      const bank = document.getElementById('bankname').value;
+      const account = document.getElementById('account').value;
+      const ifsc = document.getElementById('ifsc').value;
+      const taxable = salary - deductions;
+
+      const date = new Date().toLocaleDateString();
+
+      // Fill receipt table
+      document.getElementById('rName').innerText = fullname;
+      document.getElementById('rPAN').innerText = pan;
+      document.getElementById('rDOB').innerText = dob;
+      document.getElementById('rSalary').innerText = salary;
+      document.getElementById('rDeductions').innerText = deductions;
+      document.getElementById('rTaxable').innerText = taxable;
+      document.getElementById('rBank').innerText = bank;
+      document.getElementById('rAccount').innerText = account;
+      document.getElementById('rIFSC').innerText = ifsc;
+      document.getElementById('rDate').innerText = date;
+
+      receipt.style.display = 'block';
+      receipt.scrollIntoView({behavior: "smooth"});
+    });
+
+    // Download PDF
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.setFontSize(14);
+      doc.text("Income Tax Return Submission Receipt", 20, 20);
+
+      let y = 30;
+      const rows = [
+        ["Name", document.getElementById('rName').innerText],
+        ["PAN", document.getElementById('rPAN').innerText],
+        ["Date of Birth", document.getElementById('rDOB').innerText],
+        ["Annual Salary (₹)", document.getElementById('rSalary').innerText],
+        ["Deductions (₹)", document.getElementById('rDeductions').innerText],
+        ["Taxable Income (₹)", document.getElementById('rTaxable').innerText],
+        ["Bank Name", document.getElementById('rBank').innerText],
+        ["Account Number", document.getElementById('rAccount').innerText],
+        ["IFSC Code", document.getElementById('rIFSC').innerText],
+        ["Submission Date", document.getElementById('rDate').innerText],
+      ];
+
+      rows.forEach(row => {
+        doc.text(`${row[0]}: ${row[1]}`, 20, y);
+        y += 10;
+      });
+
+      doc.save("ITR_Receipt.pdf");
+    });
+  </script>
+</body>
+</html>

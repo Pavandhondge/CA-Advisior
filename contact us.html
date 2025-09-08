@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Online CA Finder Platform</title>
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #002d62;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px;
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        .contact-info {
+            width: 45%;
+        }
+
+        .contact-info h2 {
+            color: #002d62;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #002d62;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            width: 50%;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h3 {
+            color: #002d62;
+            margin-bottom: 20px;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .contact-form label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+            color: #002d62;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Focus effects for inputs */
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #002d62;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 45, 98, 0.5);
+        }
+
+        .contact-form button {
+            background-color: #002d62;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #001c4d;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #002d62;
+            color: white;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* Media Query for responsiveness */
+        @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-info, .contact-form {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </header>
+
+    <section class="contact-section">
+        <div class="contact-info">
+            <h2>Get in Touch with Us</h2>
+            <p>Welcome to the Online CA Finder Platform. Whether you're a user looking for professional CA services or a Chartered Accountant looking to offer your expertise, we're here to help you connect.</p>
+            <p>Feel free to reach out to us for any questions, queries, or support regarding our platform, services, or how to get started!</p>
+            <p><strong>Contact Information:</strong></p>
+            <p><strong>Email:</strong> <a href="mailto:support@onlinecafinder.com">support@onlinecafinder.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+11234567890">+1 (123) 456-7890</a></p>
+            <p><strong>Address:</strong> 123 Finance Ave, Business City, Country</p>
+        </div>
+
+        <div class="contact-form">
+            <h3>Contact Form</h3>
+            <form action="#" method="POST">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Online CA Finder Platform | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

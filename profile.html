@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online CA Advisor</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background-color: #004085;
+      color: white;
+      padding: 10px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .brand {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar .contact {
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .navbar .menu {
+      display: flex;
+      gap: 20px;
+      margin-right: 50px; /* Adds space from the right side */
+    }
+
+    .navbar .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .navbar .menu a:hover {
+      color: #ffcc00;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 100px auto 20px;
+      padding: 0 15px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .filter-form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .profile-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .profile-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .profile-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+    }
+
+    .profile-info {
+      flex-grow: 1;
+    }
+
+    .profile-info h2 {
+      color: #555;
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+
+    .profile-info p {
+      font-size: 14px;
+      color: #777;
+      margin: 5px 0;
+    }
+
+   .btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #0056b3, #008cff);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 123, 255, 0.5);
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div>
+      <div class="brand">Online CA Advisor</div>
+      <div class="contact">Contact: +91 9876543210, +91 1234567890 | Email: caadvisor@example.com</div>
+    </div>
+    <div class="menu">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Find a Chartered Accountant</h1>
+
+    <!-- Filter Form -->
+    <div class="filter-form">
+      <div>
+        <label for="city">City:</label>
+        <select id="city">
+          <option value="all">All</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Pune">Pune</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Kolkata">Kolkata</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="state">State:</label>
+        <select id="state">
+          <option value="all">All</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Telangana">Telangana</option>
+          <option value="West Bengal">West Bengal</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="specialization">Specialization:</label>
+        <select id="specialization">
+          <option value="all">All</option>
+          <option value="GST">GST</option>
+          <option value="Taxation">Taxation</option>
+          <option value="Auditing">Auditing</option>
+          <option value="Financial Planning">Financial Planning</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- CA Profiles Section -->
+    <div class="profile-list" id="profile-list">
+      <!-- Profiles will be generated dynamically -->
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cityFilter = document.getElementById('city');
+      const stateFilter = document.getElementById('state');
+      const specializationFilter = document.getElementById('specialization');
+      const profileList = document.getElementById('profile-list');
+
+      const profileImages = [
+        "images/Girl4.webp",
+        "https://randomuser.me/api/portraits/women/2.jpg",
+         "https://randomuser.me/api/portraits/men/3.jpg",
+         "https://randomuser.me/api/portraits/women/4.jpg",
+         "https://randomuser.me/api/portraits/men/5.jpg",
+         "https://randomuser.me/api/portraits/women/6.jpg"
+      ];
+
+      function getRandomImage() {
+        const index = Math.floor(Math.random() * profileImages.length);
+        return profileImages[index];
+      }
+
+      const profiles = [];
+
+      const cities = ["Mumbai", "Delhi", "Bangalore", "Pune", "Hyderabad", "Kolkata"];
+      const states = ["Maharashtra", "Delhi", "Karnataka", "Telangana", "West Bengal"];
+      const specializations = ["GST", "Taxation", "Auditing", "Financial Planning"];
+
+      let id = 1;
+      cities.forEach(city => {
+        states.forEach(state => {
+          specializations.forEach(spec => {
+            for (let i = 1; i <= 10; i++) {
+              profiles.push({
+                id: id++,
+                name: `CA ${city} ${i}`,
+                city: city,
+                state: state,
+                specialization: spec,
+                photo: getRandomImage()
+              });
+            }
+          });
+        });
+      });
+
+      function displayProfiles(filteredProfiles) {
+        profileList.innerHTML = "";
+        const limitedProfiles = filteredProfiles.slice(0, 10);
+        limitedProfiles.forEach(profile => {
+          const profileCard = document.createElement('div');
+          profileCard.classList.add('profile-card');
+
+          profileCard.innerHTML =
+profileCard.innerHTML = `
+  <img src="${profile.photo}" alt="CA Photo">
+  <div class="profile-info">
+    <h2>${profile.name}</h2>
+    <p><strong>City:</strong> ${profile.city}</p>
+    <p><strong>State:</strong> ${profile.state}</p>
+    <p><strong>Specialization:</strong> ${profile.specialization}</p>
+    <a href="Apponiment.html?ca=${encodeURIComponent(profile.name)}" class="btn">Book Appointment</a>
+  </div>
+
+            </div>
+          `;
+          profileList.appendChild(profileCard);
+        });
+      }
+
+      function filterProfiles() {
+        const city = cityFilter.value.toLowerCase();
+        const state = stateFilter.value.toLowerCase();
+        const specialization = specializationFilter.value.toLowerCase();
+
+        const filteredProfiles = profiles.filter(profile => {
+          return (
+            (city === "all" || profile.city.toLowerCase() === city) &&
+            (state === "all" || profile.state.toLowerCase() === state) &&
+            (specialization === "all" || profile.specialization.toLowerCase() === specialization)
+          );
+        });
+
+        displayProfiles(filteredProfiles);
+      }
+
+      cityFilter.addEventListener('change', filterProfiles);
+      stateFilter.addEventListener('change', filterProfiles);
+      specializationFilter.addEventListener('change', filterProfiles);
+
+      displayProfiles(profiles);
+    });
+  </script>
+</body>
+</html>

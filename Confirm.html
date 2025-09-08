@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Confirmation</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0fff0; padding: 30px; }
+    .box { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 10px; border: 2px solid #28a745; box-shadow: 0 4px 10px rgba(40,167,69,0.2); text-align: center; }
+    h2 { color: #28a745; }
+    p { font-size: 16px; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>✅ Appointment Confirmed</h2>
+    <p><strong>CA Name:</strong> <span id="caName"></span></p>
+    <p><strong>Client:</strong> <span id="name"></span></p>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Phone:</strong> <span id="phone"></span></p>
+    <p><strong>Service:</strong> <span id="service"></span></p>
+    <p><strong>Date:</strong> <span id="date"></span></p>
+    <p><strong>Time:</strong> <span id="time"></span></p>
+    <p><em>A confirmation email has been sent to your inbox.</em></p>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById("caName").textContent = urlParams.get("caName");
+    document.getElementById("name").textContent = urlParams.get("name");
+    document.getElementById("email").textContent = urlParams.get("email");
+    document.getElementById("phone").textContent = urlParams.get("phone");
+    document.getElementById("service").textContent = urlParams.get("service");
+    document.getElementById("date").textContent = urlParams.get("date");
+    document.getElementById("time").textContent = urlParams.get("time");
+  </script>
+</body>
+</html>
